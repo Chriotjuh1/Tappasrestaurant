@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Tapasrestaurant</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="button">Button</string>
+    <string name="volgende">Volgende</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="Gerechten">Gerechten</string>
+    <string name="Dranken">Dranken</string>
+</resources>
