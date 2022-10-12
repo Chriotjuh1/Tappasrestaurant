@@ -1,5 +1,6 @@
 package com.example.tapasrestaurant
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -8,18 +9,28 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import com.example.tapasrestaurant.ui.main.SectionsPagerAdapter
 import com.example.tapasrestaurant.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var btnOpenActivity : Button = findViewById(R.id.btnVolgende)
+        btnOpenActivity.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            StartActivity(intent)
+        }
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         // val viewPager: ViewPager = binding.viewPager
@@ -33,4 +44,5 @@ class MainActivity : AppCompatActivity() {
                //  .setAction("Action", null).show()
         // Hallo, ik ben Jack
         }
+
     }
