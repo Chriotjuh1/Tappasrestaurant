@@ -55,6 +55,10 @@
                     android:id="@+id/imgTapas1"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
                     app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="176dp"/>
+            <TextView   android:id="@+id/texthello"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

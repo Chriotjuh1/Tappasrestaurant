@@ -16,9 +16,8 @@ import com.example.tapasrestaurant.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-
-
-
+    var tabLayout: TabLayout? = null
+    var viewPager: ViewPager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,23 +25,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var btnOpenActivity : Button = findViewById(R.id.btnVolgende)
+        // tabLayout = findViewById(R.id.)
+        var btnOpenActivity: Button = findViewById(R.id.btnVolgende)
         btnOpenActivity.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
-            StartActivity(intent)
+            startActivity(intent)
         }
-
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        // val viewPager: ViewPager = binding.viewPager
-        // viewPager.adapter = sectionsPagerAdapter
-        // val tabs: TabLayout = binding.tabs
-        // tabs.setupWithViewPager(viewPager)
-        // val fab: FloatingActionButton = binding.fab
-
-        // fab.setOnClickListener { view ->
-            // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-               //  .setAction("Action", null).show()
-        // Hallo, ik ben Jack
-        }
-
     }
+}
