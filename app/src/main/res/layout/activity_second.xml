@@ -35,7 +35,7 @@
 
             </com.google.android.material.tabs.TabLayout>
             <Button
-                    android:text="@string/volgende"
+                    android:text="Terug"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp" android:id="@+id/btnVolgende"
                     app:layout_constraintTop_toBottomOf="@+id/tabLayout" app:layout_constraintEnd_toEndOf="parent"
@@ -57,8 +57,7 @@
                     app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="176dp"/>
             <TextView   android:id="@+id/texthello"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                />
+                        android:layout_height="wrap_content"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
