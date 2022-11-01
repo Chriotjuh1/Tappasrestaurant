@@ -13,13 +13,9 @@ import android.widget.Button
 import com.example.tapasrestaurant.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
         // tabLayout = findViewById(R.id.)
         var btnOpenActivity: Button = findViewById(R.id.btnVolgende)

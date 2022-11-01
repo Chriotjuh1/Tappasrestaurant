@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/activity_betaalsysteem.xml" value="0.1" />
-        <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/activity_login.xml" value="0.1546875" />
+        <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/activity_second.xml" value="0.2" />
         <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/activity_second_actviity.xml" value="0.1" />
         <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/activity_second_betaalsysteem.xml" value="0.1" />
+        <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/activity_start.xml" value="0.33" />
         <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/fragment_blank.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/fragment_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/jack/IdeaProjects/Tappasrestaurant/app/src/main/res/layout/secondactivity.xml" value="0.22826086956521738" />
