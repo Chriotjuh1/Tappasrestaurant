@@ -50,7 +50,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imgTapas1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.052"
-                    app:layout_constraintVertical_bias="0.573"/>
+            />
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" app:srcCompat="@mipmap/tappasimage6zes_foreground"
