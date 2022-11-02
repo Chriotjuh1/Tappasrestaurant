@@ -12,4 +12,5 @@
     <string name="afbeelding">Afbeelding</string>
     <string name="start_text_view">Klik hieronder om te starten</string>
     <string name="start">Start</string>
+    <string name="terug">Terug</string>
 </resources>
