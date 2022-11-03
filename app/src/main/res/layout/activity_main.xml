@@ -110,19 +110,63 @@
                 app:layout_constraintHorizontal_bias="0.545"/>
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="match_parent" android:id="@+id/constraintLayout2">
+=======
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.tabs.TabLayout
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:background="#8BC34A" android:id="@+id/tabLayout"
+                    app:tabTextColor="#FFFFFF" app:tabIndicatorColor="#FFFFFF"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/btnVolgende"
+                    app:layout_constraintVertical_bias="1.0" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+>>>>>>> master
 
             <TextView
                     android:text="@string/holy_guacamoly"
                     android:layout_width="wrap_content"
+<<<<<<< HEAD
                     android:layout_height="wrap_content" android:id="@+id/txtHoly"
                     android:textSize="20sp" android:fontFamily="sans-serif-medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="16dp" app:layout_constraintHorizontal_bias="0.498"
                     android:textColor="#00FFFFFF"/>
+=======
+                    android:layout_height="wrap_content" android:id="@+id/btnVolgende"
+                    android:backgroundTint="#4CAF50" android:textColor="#263238"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.976"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@mipmap/tappasimage6zes_foreground"
+                    android:id="@+id/imgTapas2"
+                    app:layout_constraintBottom_toTopOf="@+id/imgTapas3"
+                    app:layout_constraintTop_toBottomOf="@+id/imgTapas1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.052"
+            />
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@mipmap/tappasimage6zes_foreground"
+                    android:id="@+id/imgTapas3"
+                    app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+                    android:layout_marginBottom="100dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.052"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@mipmap/tappasimage6zes_foreground"
+                    android:id="@+id/imgTapas1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="100dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.052"/>
+
+>>>>>>> master
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-   
