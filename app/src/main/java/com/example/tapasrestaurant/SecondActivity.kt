@@ -10,7 +10,7 @@ class SecondActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        var btnOpenActivity: Button = findViewById(R.id.btnVolgende)
+        var btnOpenActivity: Button = findViewById(R.id.btnBetalen)
         btnOpenActivity.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

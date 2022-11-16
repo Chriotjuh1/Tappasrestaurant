@@ -8,7 +8,7 @@
         tools:context=".StartActivity">
 
     <Button
-            android:text="@string/start"
+            android:text="start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/start_btn"
             app:layout_constraintTop_toTopOf="parent"

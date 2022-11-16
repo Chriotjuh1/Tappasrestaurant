@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivityView">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/constraintLayout2">
@@ -19,7 +19,7 @@
                     android:layout_height="46dp"
                     android:background="#8BC34A" android:id="@+id/tabLayout"
                     app:tabTextColor="#FFFFFF" app:tabIndicatorColor="#FFFFFF"
-                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/btnVolgende"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/btnBetalen"
                     app:layout_constraintVertical_bias="1.0" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 
@@ -35,9 +35,9 @@
 
             </com.google.android.material.tabs.TabLayout>
             <Button
-                    android:text="@string/terug"
+                    android:text="Terug"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/btnVolgende"
+                    android:layout_height="wrap_content" android:id="@+id/btnBetalen"
                     android:backgroundTint="#4CAF50" android:textColor="#263238"
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.976"

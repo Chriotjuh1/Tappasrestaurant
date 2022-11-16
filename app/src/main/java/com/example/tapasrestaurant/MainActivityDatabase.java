@@ -1,0 +1,17 @@
+package com.example.tapasrestaurant;
+
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class MainActivityDatabase extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Database2 db = new Database2();
+    }
+}
+
