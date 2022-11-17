@@ -30,7 +30,7 @@ public class Database2 {
         System.out.println("connection status:" + status);
     }
 
-    private void connect()
+    public void connect()
     {
         Thread thread = new Thread(new Runnable() {
             @Override
