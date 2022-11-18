@@ -85,11 +85,10 @@ public class DbConnect  {
                     ResultSet rs = stmt.executeQuery( "select * from public.gerecht;" );
                     while ( rs.next() ) {
                         // @TODO map data and show first on the console to see if it works
-//                        int albumid = rs.getInt("AlbumId");
-//                        String  title = rs.getString("Title");
-//                        int artistid  = rs.getInt("ArtistId");
-//                        System.out.printf( "AlbumId = %s , Title = %s, ArtistId = %s ", albumid,title, artistid );
-//                        System.out.println();
+                        int id = rs.getInt("id");
+                        String  name = rs.getString("name");
+                        System.out.printf( "id = %s , Name = %s ", id,name );
+                        System.out.println();
                     }
                     rs.close();
                     stmt.close();
