@@ -17,11 +17,11 @@ public class DbConnect  {
     // private final String host = "35.44.16.169";
 
     // For Local PostgreSQL
-    private final String host = "10.10.10.40";
-    private final String database = "tappas";
+    private final String host = "10.0.2.2"; //""10.10.10.40";
+    private final String database = "tapas";
     private final int port = 5432;
-    private final String user = "softwareguys";
-    private final String pass = "T^jTc4rv*!M6FKYVybFbuQG&v^HVkJ$KfRd1PCuAc$$@rEVvrJvKH%9#7gFQ";
+    private final String user = "postgres"; //"softwareguys";
+    private final String pass = "rayrayray"; // "T^jTc4rv*!M6FKYVybFbuQG&v^HVkJ$KfRd1PCuAc$$@rEVvrJvKH%9#7gFQ";
     private String url = "jdbc:postgresql://%s:%d/%s";
 
     private boolean status;
@@ -49,6 +49,7 @@ public class DbConnect  {
                     status = true;
                     System.out.println("connected:" + status);
                     statusS = "Connected";
+                    callback.callbackCall();
                 }
                 catch (Exception e)
                 {
@@ -81,7 +82,7 @@ public class DbConnect  {
             {
                 try {
                     stmt = connection.createStatement();
-                    ResultSet rs = stmt.executeQuery( "select * from gerecht;" );
+                    ResultSet rs = stmt.executeQuery( "select * from public.gerecht;" );
                     while ( rs.next() ) {
                         // @TODO map data and show first on the console to see if it works
 //                        int albumid = rs.getInt("AlbumId");
