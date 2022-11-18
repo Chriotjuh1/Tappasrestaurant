@@ -28,6 +28,8 @@ public class DbConnect  {
     public String statusS;
     Statement stmt = null;
 
+    String nameR = "";
+
     public interface ConnectionCallback {
         void callbackCall();
     }
@@ -87,9 +89,13 @@ public class DbConnect  {
                         // @TODO map data and show first on the console to see if it works
                         int id = rs.getInt("id");
                         String  name = rs.getString("name");
+                        // TODO just for testing
+                        nameR = name;
                         System.out.printf( "id = %s , Name = %s ", id,name );
                         System.out.println();
+                        callback.callbackCall();
                     }
+
                     rs.close();
                     stmt.close();
                     connection.close();

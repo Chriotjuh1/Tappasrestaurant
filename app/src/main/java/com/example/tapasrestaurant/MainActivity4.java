@@ -30,6 +30,7 @@ public class MainActivity4 extends AppCompatActivity {
         setContentView(R.layout.activity_maindata);
         // Get the textview to show something in the textview
         TextView txt = findViewById(R.id.btnLoadData);
+        TextView txtOut = findViewById(R.id.textView2);
 
         txt.setOnClickListener(v -> {
 
@@ -48,6 +49,17 @@ public class MainActivity4 extends AppCompatActivity {
                 db.queryTest( () -> {
                     // TODO use txt view to show something..
                     // BUT first look into logs and break
+                    // THIS IS NEEDED TO UPDATE UI
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            // Stuff that updates the UI
+                            txtOut.setText( db.nameR );
+                        }
+                    });
+
                 });
             });
 
