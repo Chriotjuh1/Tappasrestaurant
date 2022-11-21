@@ -17,11 +17,11 @@ public class DbConnect  {
     // private final String host = "35.44.16.169";
 
     // For Local PostgreSQL
-    private final String host = "10.0.2.2"; //""10.10.10.40";
-    private final String database = "tapas";
+    private final String host = "10.10.10.40";
+    private final String database = "tappas";
     private final int port = 5432;
-    private final String user = "postgres"; //"softwareguys";
-    private final String pass = "rayrayray"; // "T^jTc4rv*!M6FKYVybFbuQG&v^HVkJ$KfRd1PCuAc$$@rEVvrJvKH%9#7gFQ";
+    private final String user = "softwareguys";
+    private final String pass = "T^jTc4rv*!M6FKYVybFbuQG&v^HVkJ$KfRd1PCuAc$$@rEVvrJvKH%9#7gFQ";
     private String url = "jdbc:postgresql://%s:%d/%s";
 
     private boolean status;
@@ -87,11 +87,11 @@ public class DbConnect  {
                     ResultSet rs = stmt.executeQuery( "select * from public.gerecht;" );
                     while ( rs.next() ) {
                         // @TODO map data and show first on the console to see if it works
-                        int id = rs.getInt("id");
-                        String  name = rs.getString("name");
+                        int id = rs.getInt("Product_ID");
+                        String  name = rs.getString("Naam");
                         // TODO just for testing
                         nameR = name;
-                        System.out.printf( "id = %s , Name = %s ", id,name );
+                        System.out.printf( "Product_ID = %s , Naam = %s ", id,name );
                         System.out.println();
                         callback.callbackCall();
                     }
