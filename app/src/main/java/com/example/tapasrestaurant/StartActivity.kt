@@ -17,5 +17,6 @@ class StartActivity : AppCompatActivity() {
         }
     }
 
-    fun GetDataToTextView(view: View) {}
+    // Why is this function here
+    //fun GetDataToTextView(view: View) {}
 }

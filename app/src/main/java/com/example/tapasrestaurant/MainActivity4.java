@@ -30,9 +30,11 @@ public class MainActivity4 extends AppCompatActivity {
         setContentView(R.layout.activity_maindata);
         // Get the textview to show something in the textview
         TextView txt = findViewById(R.id.btnLoadData);
-        TextView txtOut = findViewById(R.id.textView2);
+        TextView txtOut = findViewById(R.id.textView);
+        TextView txtOut2 = findViewById(R.id.textView2);
+        TextView txtOut3 = findViewById(R.id.textView3);
 
-        txt.setOnClickListener(v -> {
+
 
 //                Toast.makeText(MainActivity4.this, "Deze button werkt", Toast.LENGTH_SHORT).show();
 //                TextView txv1 =(TextView) findViewById(R.id.textView);
@@ -56,14 +58,16 @@ public class MainActivity4 extends AppCompatActivity {
                         public void run() {
 
                             // Stuff that updates the UI
-                            txtOut.setText( db.nameR );
+                            txtOut.setText( db.nameE );
+                            txtOut2.setText( db.nameR );
+                            txtOut3.setText( db.nameR );
                         }
                     });
 
                 });
             });
 
-        });
+
     }
 
     public void GetDataToTextView(View v)

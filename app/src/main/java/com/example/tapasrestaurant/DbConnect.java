@@ -1,4 +1,6 @@
 package com.example.tapasrestaurant;
+import com.example.tapasrestaurant.model.Gerecht;
+
 import javax.security.auth.callback.Callback;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,7 +30,10 @@ public class DbConnect  {
     public String statusS;
     Statement stmt = null;
 
-    String nameR = "";
+    String nameR;
+    String nameE;
+
+    Gerecht[] gArray;
 
     public interface ConnectionCallback {
         void callbackCall();
@@ -89,7 +94,13 @@ public class DbConnect  {
                         // @TODO map data and show first on the console to see if it works
                         int id = rs.getInt("Product_ID");
                         String  name = rs.getString("Naam");
-                        // TODO just for testing
+                        // Dit is een gerechten object die ik vul met de data van de database
+                        Gerecht g = new Gerecht();
+                        g.setNaam(name);
+                        g.setProduct_Id(id);
+                        gArray = new Gerecht[g];
+                        // Hier moeten we het object g nog aan een array toevoegen
+                        nameE = String.valueOf(id);
                         nameR = name;
                         System.out.printf( "Product_ID = %s , Naam = %s ", id,name );
                         System.out.println();
