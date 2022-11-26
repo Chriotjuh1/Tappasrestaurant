@@ -1,22 +1,17 @@
 package com.example.tapasrestaurant;
 
-import android.media.browse.MediaBrowser;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import org.json.JSONException;
+import com.example.tapasrestaurant.model.Gerecht;
 
-import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+import java.util.ArrayList;
 
 public class MainActivity4 extends AppCompatActivity {
 
@@ -45,18 +40,15 @@ public class MainActivity4 extends AppCompatActivity {
                 // TODO also use callback when error occurs and show error
                 String statusS = db.statusS;
                 Log.d("Callback", statusS);
-
-                // TODO Look into Second call with callback
-                // TODO return some result add a first parameter ( and make an object class what we expect and fill that out of the query )
-                db.queryTest( () -> {
-                    // TODO use txt view to show something..
-                    // BUT first look into logs and break
+                // Do a query
+                db.queryTest( (ArrayList<Gerecht> gerechten) -> {
                     // THIS IS NEEDED TO UPDATE UI
                     runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
 
+                            // TODO use the gerechten ArrayList returned in callback for the listView
                             // Stuff that updates the UI
                             txtOut.setText( db.nameE );
                             txtOut2.setText( db.nameR );

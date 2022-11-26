@@ -1,13 +1,12 @@
 package com.example.tapasrestaurant;
 import com.example.tapasrestaurant.model.Gerecht;
 
-import javax.security.auth.callback.Callback;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.concurrent.Executor;
+import java.util.ArrayList;
 
 public class DbConnect  {
     public Connection connection;
@@ -33,7 +32,11 @@ public class DbConnect  {
     String nameR;
     String nameE;
 
-    Gerecht[] gArray;
+    ArrayList<Gerecht> gerechten = new ArrayList<Gerecht>();
+
+    public interface ConnectionQueryCallback {
+        void callbackCall(ArrayList<Gerecht> gerechten);
+    }
 
     public interface ConnectionCallback {
         void callbackCall();
@@ -82,7 +85,7 @@ public class DbConnect  {
 
     // @todo query test is called and uses connection, so first a DB connection is needed bvefore calling this function
     //       if the class is created a connection is established automatically
-    public void queryTest(final ConnectionCallback callback)
+    public void queryTest(final ConnectionQueryCallback callback)
     {
         Thread thread = new Thread(new Runnable() {
             @Override public void run()
@@ -94,19 +97,20 @@ public class DbConnect  {
                         // @TODO map data and show first on the console to see if it works
                         int id = rs.getInt("Product_ID");
                         String  name = rs.getString("Naam");
-                        // Dit is een gerechten object die ik vul met de data van de database
+                        // Dit is een gerechten object/element die ik vul met de data van de database
                         Gerecht g = new Gerecht();
                         g.setNaam(name);
                         g.setProduct_Id(id);
-                        gArray = new Gerecht[g];
-                        // Hier moeten we het object g nog aan een array toevoegen
+                        // Adding element gerecht to the gerechten ArrayList
+                        gerechten.add(g);
+
+                        // Left this in so textview works.. can be removed when using listview
                         nameE = String.valueOf(id);
                         nameR = name;
-                        System.out.printf( "Product_ID = %s , Naam = %s ", id,name );
-                        System.out.println();
-                        callback.callbackCall();
-                    }
 
+                        // Callback function to return (we could add gerechten to this callback function)
+                        callback.callbackCall(gerechten);
+                    }
                     rs.close();
                     stmt.close();
                     connection.close();
