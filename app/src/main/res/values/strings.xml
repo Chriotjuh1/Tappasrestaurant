@@ -10,10 +10,7 @@
     <string name="Gerechten">Gerechten</string>
     <string name="Dranken">Dranken</string>
     <string name="afbeelding">Afbeelding</string>
-<<<<<<< HEAD
-=======
     <string name="start_text_view">Klik hieronder om te starten</string>
     <string name="start">Start</string>
     <string name="terug">Terug</string>
->>>>>>> master
 </resources>
