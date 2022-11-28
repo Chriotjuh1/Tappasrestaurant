@@ -1,13 +1,13 @@
 package com.example.tapasrestaurant.entity;
 
 public class Gerecht {
-    private Integer Product_Id; // private = restricted access
+    private Integer productid; // private = restricted access
     private String Naam;
 
     private double Price;
     // Getter
     public Integer getProduct_Id() {
-        return Product_Id;
+        return productid;
     }
 
     public String getNaam() {
@@ -19,8 +19,8 @@ public class Gerecht {
     }
 
     // Setter
-    public void setProduct_Id(Integer newId) {
-        this.Product_Id = newId;
+    public void setProductid(Integer newId) {
+        this.productid = newId;
     }
 
     public void setNaam(String newNaam) {

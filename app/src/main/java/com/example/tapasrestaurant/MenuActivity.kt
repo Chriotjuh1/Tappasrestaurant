@@ -23,6 +23,7 @@ class MenuActivity : AppCompatActivity() {
         var db = DbConnect();
 
         var gerechtenView = ArrayList<Gerecht>()
+        var gerechtenGeselecteerd = ArrayList<Gerecht>()
 
         // TODO Arraylist met selected
 
@@ -56,9 +57,10 @@ class MenuActivity : AppCompatActivity() {
             val gerecht = gerechtenView[position] // The item that was clicked
             // val intent = Intent(this, BookDetailActivity::class.java)
             // startActivity(intent)
-            val toast = Toast.makeText(applicationContext, "" + gerecht.naam, Toast.LENGTH_LONG)
+            val toast = Toast.makeText(applicationContext, "Geselecteerd: " + gerecht.naam, Toast.LENGTH_SHORT)
             toast.show()
             // TODO Voeg het geselecteerde gerecht toe aan je selected arraylist
+            gerechtenGeselecteerd.add(gerecht)
 
         }
 
@@ -69,6 +71,16 @@ class MenuActivity : AppCompatActivity() {
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
             finish()
+        }
+        var btnBestellen: Button = findViewById(R.id.btnBestellen)
+        btnBestellen.setOnClickListener{
+            // TODO bestellen naar database...
+
+            var db2 = DbConnect();
+            db2.doDbConnect() { ->
+
+                db2.insertBestelling(gerechtenGeselecteerd)
+            }
         }
     }
 }

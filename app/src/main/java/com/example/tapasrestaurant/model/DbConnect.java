@@ -93,18 +93,49 @@ public class DbConnect  {
                     ResultSet rs = stmt.executeQuery( "select * from public.gerecht;" );
                     while ( rs.next() ) {
                         // @TODO map data and show first on the console to see if it works
-                        int id = rs.getInt("Product_ID");
+                        int id = rs.getInt("productid");
                         String  name = rs.getString("Naam");
                         // Dit is een gerechten object/element die ik vul met de data van de database
                         Gerecht g = new Gerecht();
                         g.setNaam(name);
-                        g.setProduct_Id(id);
+                        g.setProductid(id);
                         // Adding element gerecht to the gerechten ArrayList
                         gerechten.add(g);
                     }
                     // Callback function to return (we could add gerechten to this callback function)
                     callback.callbackCall(gerechten);
                     rs.close();
+                    stmt.close();
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+        try
+        {
+            thread.join();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            this.status = false;
+        }
+    }
+    public void insertBestelling(ArrayList gerechten)
+    {
+        Thread thread = new Thread(new Runnable() {
+            @Override public void run()
+            {
+                try {
+                    stmt = connection.createStatement();
+                    String sql = "";
+                    for (int i = 0; i < gerechten.size(); i++) {
+                        Gerecht g = (Gerecht) gerechten.get(i);
+                        sql += "insert into public.bestelling (product_id) VALUES (" + g.getProduct_Id() +");";
+                    }
+                    stmt.executeQuery( sql );
                     stmt.close();
                     connection.close();
                 } catch (SQLException e) {
