@@ -28,7 +28,7 @@ public class DbConnect  {
     public String statusS;
     Statement stmt = null;
 
-    String nameR;
+    public String nameR;
     String nameE;
 
     ArrayList<Gerecht> gerechten = new ArrayList<Gerecht>();
@@ -56,7 +56,7 @@ public class DbConnect  {
                     Class.forName("org.postgresql.Driver");
                     connection = DriverManager.getConnection(url, user, pass);
                     status = true;
-                    System.out.println("connected:" + status);
+                    //System.out.println("connected:" + status);
                     statusS = "Connected";
                     callback.callbackCall();
                 }
@@ -102,11 +102,6 @@ public class DbConnect  {
                         g.setProduct_Id(id);
                         // Adding element gerecht to the gerechten ArrayList
                         gerechten.add(g);
-
-                        // Left this in so textview works.. can be removed when using listview
-                        nameE = String.valueOf(id);
-                        nameR = name;
-
                         // Callback function to return (we could add gerechten to this callback function)
                         callback.callbackCall(gerechten);
                     }

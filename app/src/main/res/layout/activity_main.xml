@@ -13,7 +13,8 @@
                 android:layout_width="409dp"
                 android:layout_height="729dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="1dp"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="1dp" android:id="@+id/ListView"/>
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="1dp" android:id="@+id/ListView"
+        />
     </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.tabs.TabLayout
                 android:layout_width="0dp"
@@ -54,4 +55,5 @@
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.545"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
