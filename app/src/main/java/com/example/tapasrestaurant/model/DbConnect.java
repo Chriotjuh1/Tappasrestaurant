@@ -1,5 +1,7 @@
 package com.example.tapasrestaurant.model;
 
+import com.example.tapasrestaurant.entity.Gerecht;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -27,9 +29,6 @@ public class DbConnect  {
     private boolean status;
     public String statusS;
     Statement stmt = null;
-
-    public String nameR;
-    String nameE;
 
     ArrayList<Gerecht> gerechten = new ArrayList<Gerecht>();
 
@@ -84,7 +83,7 @@ public class DbConnect  {
 
     // @todo query test is called and uses connection, so first a DB connection is needed bvefore calling this function
     //       if the class is created a connection is established automatically
-    public void queryTest(final ConnectionQueryCallback callback)
+    public void getGerechten(final ConnectionQueryCallback callback)
     {
         Thread thread = new Thread(new Runnable() {
             @Override public void run()
@@ -102,9 +101,9 @@ public class DbConnect  {
                         g.setProduct_Id(id);
                         // Adding element gerecht to the gerechten ArrayList
                         gerechten.add(g);
-                        // Callback function to return (we could add gerechten to this callback function)
-                        callback.callbackCall(gerechten);
                     }
+                    // Callback function to return (we could add gerechten to this callback function)
+                    callback.callbackCall(gerechten);
                     rs.close();
                     stmt.close();
                     connection.close();
