@@ -41,7 +41,7 @@ class MenuActivity : AppCompatActivity() {
                 // We need to get the name of gerechten out of gerechten
                 // Into the gerecht
                 gerechten.forEach { gerecht ->
-                    gerechtenA.add(gerecht.naam +"                                                            "+ gerecht.prijs)
+                    gerechtenA.add(gerecht.naam +" "+ gerecht.prijs)
                 }
                 arrayAdapter = ArrayAdapter(this,
                     android.R.layout.simple_list_item_1, gerechtenA)
