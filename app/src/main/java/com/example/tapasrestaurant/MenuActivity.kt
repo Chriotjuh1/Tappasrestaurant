@@ -38,7 +38,7 @@ class MenuActivity : AppCompatActivity() {
 
                 val gerechtenA = arrayListOf<String>()
 
-                // We need to get the name of gerechten out of gerechten..
+                // We need to get the name of gerechten out of gerechten
                 // Into the gerecht
                 gerechten.forEach { gerecht ->
                     gerechtenA.add(gerecht.naam)
@@ -59,7 +59,6 @@ class MenuActivity : AppCompatActivity() {
             // startActivity(intent)
             val toast = Toast.makeText(applicationContext, "Geselecteerd: " + gerecht.naam, Toast.LENGTH_SHORT)
             toast.show()
-            // TODO Voeg het geselecteerde gerecht toe aan je selected arraylist
             gerechtenGeselecteerd.add(gerecht)
 
         }

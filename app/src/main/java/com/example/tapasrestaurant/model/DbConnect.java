@@ -93,8 +93,8 @@ public class DbConnect  {
                     ResultSet rs = stmt.executeQuery( "select * from public.gerecht;" );
                     while ( rs.next() ) {
                         // @TODO map data and show first on the console to see if it works
-                        int id = rs.getInt("productid");
-                        String  name = rs.getString("Naam");
+                        int id = rs.getInt("id");
+                        String  name = rs.getString("naam");
                         // Dit is een gerechten object/element die ik vul met de data van de database
                         Gerecht g = new Gerecht();
                         g.setNaam(name);
