@@ -20,7 +20,7 @@
                 android:name=".MenuActivity"
                 android:exported="false"/>
         <activity
-                android:name=".SecondActivity"
+                android:name=".PayoutActivity"
                 android:exported="false"/>
         <activity
                 android:name=".StartActivity"

@@ -13,7 +13,7 @@ import com.example.tapasrestaurant.entity.Gerecht
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_menu)
 
         // Opstarten van view
         var lv = findViewById<ListView>(R.id.ListView)
@@ -65,13 +65,13 @@ class MenuActivity : AppCompatActivity() {
 
 
         // tabLayout = findViewById(R.id.)
-        var btnOpenActivity: Button = findViewById(R.id.btnVolgende)
-        btnOpenActivity.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
+        val btnBetalen: Button = findViewById(R.id.btnBetalen)
+        btnBetalen.setOnClickListener {
+            val intent = Intent(this, PayoutActivity::class.java)
             startActivity(intent)
             finish()
         }
-        var btnBestellen: Button = findViewById(R.id.btnBestellen)
+        val btnBestellen: Button = findViewById(R.id.btnBestellen)
         btnBestellen.setOnClickListener{
             // TODO bestellen naar database...
 
