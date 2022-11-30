@@ -3,8 +3,8 @@ package com.example.tapasrestaurant.entity;
 public class Gerecht {
     private Integer productid; // private = restricted access
     private String Naam;
+    private String Prijs;
 
-    private double Price;
     // Getter
     public Integer getProduct_Id() {
         return productid;
@@ -14,9 +14,8 @@ public class Gerecht {
         return Naam;
     }
 
-    public double getPrice() {
-        return Price;
-    }
+    public String getPrijs() {return Prijs;}
+
 
     // Setter
     public void setProductid(Integer newId) {
@@ -27,7 +26,9 @@ public class Gerecht {
         this.Naam = newNaam;
     }
 
-    public void setPrice(double price) {
-        Price = price;
+    public void setPrijs (String newPrijs) {
+        this.Prijs = newPrijs;
     }
+
+
 }
