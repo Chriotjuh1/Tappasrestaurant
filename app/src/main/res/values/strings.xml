@@ -17,4 +17,6 @@
     <string name="pin">Pin</string>
     <string name="start_text_view">Klik hieronder om te starten</string>
     <string name="betalen_text_view">Hoe wil u betalen?</string>
+    <string name="dialog_message">Test</string>
+    <string name="dialog_title">Bestelling</string>
 </resources>

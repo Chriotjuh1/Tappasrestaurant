@@ -1,45 +1,26 @@
 package com.example.tapasrestaurant;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import androidx.appcompat.app.AppCompatActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class DialogBuilder extends AppCompatActivity {
-    private AlertDialog.Builder dialogbuilder;
-    private AlertDialog dialog;
-    private EditText orderListPopup;
-    private Button newOrderPopup_cancel, newOrderPopup_save;
 
-    public void CreateNewPopupDialog(){
-        dialogbuilder = new AlertDialog.Builder(this);
-        final View orderPopup = getLayoutInflater().inflate(R.layout.activity_menu, null);
-        orderListPopup = orderListPopup.findViewById(R.id.btnBestellen);
+public class DialogBuilder extends AppCompatDialogFragment {
 
-        dialogbuilder.setView(orderPopup);
-        dialog = dialogbuilder.create();
-        dialog.show();
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Informatie")
+                .setMessage("Weet u zeker dat u deze gerechten wil bestellen?")
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
-        newOrderPopup_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // de save button aanwijzen gebeurt hier
-            }
-        });
+                    }
+                });
 
-        newOrderPopup_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // de cancel button aanwijzen gebeurt hier
-                dialog.dismiss();
-            }
-        });
-
+        return builder.create();
     }
-
-
-
-
 }
