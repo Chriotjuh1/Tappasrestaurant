@@ -19,7 +19,7 @@ public class DbConnect  {
     // private final String host = "35.44.16.169";
 
     // For Local PostgreSQL
-    private final String host = "10.10.10.40";
+    private final String host = "100.94.99.41";
     private final String database = "tappas";
     private final int port = 5432;
     private final String user = "softwareguys";
@@ -93,7 +93,7 @@ public class DbConnect  {
                     ResultSet rs = stmt.executeQuery( "select * from public.gerecht;" );
                     while ( rs.next() ) {
                         // @TODO map data and show first on the console to see if it works
-                        int id = rs.getInt("id");
+                        int id = rs.getInt("productid");
                         String  name = rs.getString("naam");
                         String price = rs.getString("prijs");
                         // Dit is een gerechten object/element die ik vul met de data van de database

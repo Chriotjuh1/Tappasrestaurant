@@ -18,8 +18,8 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
 
         // Opstarten van view
-        var lv = findViewById<ListView>(R.id.ListView2)
-        var lv2 = findViewById<ListView>(R.id.ListView2)
+        var lv = findViewById<ListView>(R.id.orderView)
+        var lv2 = findViewById<ListView>(R.id.orderView)
         var arrayAdapter: ArrayAdapter<*>
 
         // Opstarten van model -> (dbconnectie in model-file?)
@@ -81,49 +81,82 @@ class MenuActivity : AppCompatActivity() {
         btnBestellen.setOnClickListener {
             // TODO bestellen naar database...
             var db2 = DbConnect();
-            db2.doDbConnect() { ->
 
-                db2.insertBestelling(gerechtenGeselecteerd)
-            }
 
             //val mButton = findViewById<Button>(R.id.btnBestellen)
 
             // When Button is clicked,
             //mButton.setOnClickListener {
 
-               // val items = arrayOf("Red", "Orange", "Yellow", "Blue")
+            // val items = arrayOf("Red", "Orange", "Yellow", "Blue")
 
-                var gerechtenA = arrayListOf<String>()
-                // We need to get the name of gerechten out of gerechten
-                // Into the gerecht
-                gerechtenGeselecteerd.forEach { gerecht ->
-                    gerechtenA.add( gerecht.naam + " " + gerecht.prijs)
+            var gerechtenA = arrayListOf<String>()
+            // We need to get the name of gerechten out of gerechten
+            // Into the gerecht
+            gerechtenGeselecteerd.forEach { gerecht ->
+                gerechtenA.add(gerecht.naam + " " + gerecht.prijs)
+            }
+            val gerechtenGeselecteerd_Array: Array<String> = gerechtenA.toTypedArray()
+            val builder = AlertDialog.Builder(this)
+
+
+            with(builder)
+            {
+                setTitle("Bestelling")
+                setNegativeButton("TERUG", null)
+
+
+                setItems(gerechtenGeselecteerd_Array) { dialog, which ->
+
+                    Toast.makeText(
+                        applicationContext,
+                        gerechtenGeselecteerd_Array[which] + " is clicked",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                val gerechtenGeselecteerd_Array: Array<String> = gerechtenA.toTypedArray()
-                val builder = AlertDialog.Builder(this)
-                with(builder)
-                {
-                    setTitle("Bestelling")
-                    setItems(gerechtenGeselecteerd_Array) {  dialog,  which ->
+// setPositiveButton("BESTELLEN", DialogInterface.OnClickListener {
+                // TODO save to DB insert
+
+                // dialog, id ->
 
 
-                        Toast.makeText(applicationContext, gerechtenGeselecteerd_Array[which] + " is clicked", Toast.LENGTH_SHORT).show()
-                    }
+                val listView: ListView = findViewById(R.id.orderView)
+                val builder: AlertDialog.Builder =  (this) // Pas de context toe op de AlertDialog.Builder
+                builder.setPositiveButton("BESTELLEN",
 
-                    setPositiveButton("BESTELLEN", DialogInterface.OnClickListener {
-                            // TODO save to DB insert
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // Deselecteer alle geselecteerde items in de lijst
+                        // wanneer de knop "Bestellen" in de AlertDialog wordt ingedrukt
+                        db2.doDbConnect() { ->
+                            db2.insertBestelling(gerechtenGeselecteerd)
 
-                            dialog, id -> StartActivity()
-
-
-                        setNegativeButton("TERUG", null)
-                        dialog.cancel()
-
-
-
+                        }
+                        gerechtenGeselecteerd.clear()
+                        gerechtenA.clear()
+                        listView.clearChoices() // Gebruik listView in plaats van lv
+                        listView.invalidateViews() // Gebruik listView in plaats van lv
                     })
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
+
+
+
+                    StartActivity()
+
+
+                    setNegativeButton("TERUG", null)
+                    dialog.cancel()
 
                     show()
+                }
+
+
+
+
+
+
+                    }
+
 
                     //Creating dialog box
                     //Creating dialog box
@@ -134,7 +167,7 @@ class MenuActivity : AppCompatActivity() {
                     //alert.show()
                 }
                 // Alert DialogBuilder is initialized
-               // val mAlertDialogBuilder = AlertDialog.Builder(this)
+                // val mAlertDialogBuilder = AlertDialog.Builder(this)
 
                 // Row layout is inflated and added to ListView
 //                val mRowList = layoutInflater.inflate(R.layout.activity_listview, null)
@@ -146,15 +179,13 @@ class MenuActivity : AppCompatActivity() {
 //                mAdapter.notifyDataSetChanged()
 
 
-
                 // Row item is set as view in the Builder and the
                 // ListView is displayed in the Alert Dialog
 //                mAlertDialogBuilder.setView(mListView)
 //                val dialog = mAlertDialogBuilder.create()
 //                dialog.show()
-          //  }
-        }
-    }
-}
+                //  }
+            }
+
 
 
