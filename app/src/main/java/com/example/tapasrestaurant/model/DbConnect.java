@@ -1,5 +1,6 @@
 package com.example.tapasrestaurant.model;
 
+import android.content.Context;
 import com.example.tapasrestaurant.entity.Gerecht;
 
 import java.sql.Connection;
@@ -8,7 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.sql.PreparedStatement;
+import android.provider.Settings;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.SQLException;
 public class DbConnect  {
     public Connection connection;
 
@@ -113,6 +119,7 @@ public class DbConnect  {
                     e.printStackTrace();
                 }
             }
+
         });
         thread.start();
         try
@@ -135,9 +142,9 @@ public class DbConnect  {
                     String sql = "";
                     for (int i = 0; i < gerechten.size(); i++) {
                         Gerecht g = (Gerecht) gerechten.get(i);
-                        sql += "insert into public.bestelling (product_id) VALUES (" + g.getProduct_Id() +");";
+                        sql += "INSERT INTO public.bestelling (product_id, tafel_id, \"Prijs\") VALUES (" + g.getProduct_Id() + ", 1, " + g.getPrijs() + ");";
                     }
-                    stmt.executeQuery( sql );
+                    stmt.executeUpdate( sql );
                     stmt.close();
                     connection.close();
                 } catch (SQLException e) {
@@ -156,4 +163,58 @@ public class DbConnect  {
             this.status = false;
         }
     }
-}
+
+    public void insertPayoutWaitlist(String betaalmethode, Integer tafel_id)
+    {
+        Thread thread = new Thread(() -> {
+            try {
+                stmt = connection.createStatement();
+                String sql = "insert into public.betaling VALUES (" + betaalmethode +  false;
+                stmt.executeQuery( sql );
+                stmt.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
+        try
+        {
+            thread.join();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            this.status = false;
+        }
+    }
+//    public class TableManager {
+//        private String getDeviceId() {
+//            Context context = null;
+//
+//            return Settings.Secure.getString(context.getContentResolver(),
+//                    Settings.Secure.ANDROID_ID);
+//        }
+
+//        public void useDeviceIdAsTableId(Connection connection) throws SQLException {
+//            String tafel_id = getDeviceId();
+//
+//            try {
+//                // Voer een SQL-query uit om een nieuwe tafel toe te voegen aan de database
+//                // met het device ID als tafel ID
+//                Statement statement = connection.createStatement();
+//                String sql = "INSERT INTO bestelling (id, name) VALUES (" + tafel_id + ", 'Tafel " + tafel_id + "')";
+//                statement.executeUpdate(sql);
+//            } catch (SQLException e) {
+//                // Als de tafel al bestaat in de database, voer dan een update uit om de naam van de tafel
+//                // te wijzigen naar 'Table $deviceId'
+//                Statement statement = connection.createStatement();
+//                String sql = "UPDATE bestelling SET name = 'Tafel " + tafel_id + "' WHERE id = " + tafel_id;
+//                statement.executeUpdate(sql);
+//            }
+//        }
+    }
+
+
+
+

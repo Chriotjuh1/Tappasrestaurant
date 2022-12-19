@@ -20,14 +20,14 @@
                     android:text="@string/bestellen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btnBestellen"
-                    android:backgroundTint="#2196F3" android:textColor="#263238"
+                    android:backgroundTint="#FF5722" android:textColor="#263238"
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0"/>
             <com.google.android.material.tabs.TabLayout
                     android:layout_width="0dp"
                     android:layout_height="46dp"
-                    android:background="#8BC34A" android:id="@+id/tabLayout"
+                    android:background="#F44336" android:id="@+id/tabLayout"
                     app:tabTextColor="#FFFFFF" app:tabIndicatorColor="#FFFFFF"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/btnBetalen"
                     app:layout_constraintVertical_bias="1.0" app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
                     android:text="@string/betalen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btnBetalen"
-                    android:backgroundTint="#4CAF50" android:textColor="#263238"
+                    android:backgroundTint="#FF5722" android:textColor="#263238"
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"/><![CDATA[
             ="@+id/"/>
 

@@ -3,6 +3,7 @@ package com.example.tapasrestaurant
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -44,7 +45,7 @@ class MenuActivity : AppCompatActivity() {
                 // We need to get the name of gerechten out of gerechten
                 // Into the gerecht
                 gerechten.forEach { gerecht ->
-                    gerechtenA.add(gerecht.naam + " " + gerecht.prijs)
+                    gerechtenA.add(gerecht.naam + " €" + gerecht.prijs)
                 }
                 arrayAdapter = ArrayAdapter(
                     this,
@@ -94,7 +95,7 @@ class MenuActivity : AppCompatActivity() {
             // We need to get the name of gerechten out of gerechten
             // Into the gerecht
             gerechtenGeselecteerd.forEach { gerecht ->
-                gerechtenA.add(gerecht.naam + " " + gerecht.prijs)
+                gerechtenA.add(gerecht.naam + " €" + gerecht.prijs)
             }
             val gerechtenGeselecteerd_Array: Array<String> = gerechtenA.toTypedArray()
             val builder = AlertDialog.Builder(this)
@@ -154,7 +155,6 @@ class MenuActivity : AppCompatActivity() {
 
 
 
-
                     }
 
 
@@ -185,6 +185,7 @@ class MenuActivity : AppCompatActivity() {
 //                val dialog = mAlertDialogBuilder.create()
 //                dialog.show()
                 //  }
+
             }
 
 

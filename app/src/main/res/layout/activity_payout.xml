@@ -18,7 +18,7 @@
                     android:text="@string/terug"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btnTerug"
-                    android:backgroundTint="#4CAF50" android:textColor="#263238"
+                    android:backgroundTint="#FF5722" android:textColor="#263238"
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.95"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.976"/>
@@ -26,7 +26,7 @@
                     android:text="@string/contant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btnContant"
-                    android:backgroundTint="#4CAF50" android:textColor="#263238"
+                    android:backgroundTint="#F44336" android:textColor="#263238"
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.239"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.875"/>
@@ -34,7 +34,7 @@
                     android:text="@string/pin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btnBetalen"
-                    android:backgroundTint="#4CAF50" android:textColor="#263238"
+                    android:backgroundTint="#F44336" android:textColor="#263238"
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.783"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.875"/>

@@ -4,6 +4,7 @@ public class Gerecht {
     private Integer productid; // private = restricted access
     private String Naam;
     private String Prijs;
+    private Integer Tafel;
 
     // Getter
     public Integer getProduct_Id() {
@@ -15,6 +16,10 @@ public class Gerecht {
     }
 
     public String getPrijs() {return Prijs;}
+
+    public Integer getTafel() {
+        return Tafel;
+    }
 
 
     // Setter
@@ -30,5 +35,7 @@ public class Gerecht {
         this.Prijs = newPrijs;
     }
 
+    public void setTafel (Integer newTafel) { this.Tafel = newTafel; }
 
-}
+
+    }
