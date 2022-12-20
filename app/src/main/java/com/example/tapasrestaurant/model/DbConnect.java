@@ -164,17 +164,22 @@ public class DbConnect  {
         }
     }
 
-    public void insertPayoutWaitlist(String betaalmethode, Integer tafel_id)
+    public void insertPayoutWaitlist(String betaalmethode)
     {
-        Thread thread = new Thread(() -> {
-            try {
-                stmt = connection.createStatement();
-                String sql = "insert into public.betaling VALUES (" + betaalmethode +  false;
-                stmt.executeQuery( sql );
-                stmt.close();
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+        Thread thread = new Thread(new Runnable() {
+            @Override public void run()
+            {
+                try {
+                    stmt = connection.createStatement();
+                    String sql = "INSERT INTO public.betaling(\n" +
+                            "\t\"Betaalmethode\", \"Tafel_ID\", \"Status\")\n" +
+                            "\tVALUES ('"+ betaalmethode + "', 1, false);";
+                    stmt.executeUpdate( sql );
+                    stmt.close();
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
         thread.start();
@@ -188,6 +193,8 @@ public class DbConnect  {
             this.status = false;
         }
     }
+
+
 //    public class TableManager {
 //        private String getDeviceId() {
 //            Context context = null;

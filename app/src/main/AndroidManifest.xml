@@ -3,9 +3,9 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.example.tapasrestaurant">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
             android:allowBackup="true"
@@ -17,6 +17,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Tapasrestaurant.NoActionBar"
             tools:targetApi="31">
+        <activity
+                android:name=".WaitForPaymentVerifyActivity"
+                android:exported="false"/>
         <activity
                 android:name=".MenuActivity"
                 android:exported="false"/>

@@ -3,7 +3,6 @@ package com.example.tapasrestaurant
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -130,7 +129,6 @@ class MenuActivity : AppCompatActivity() {
                         // wanneer de knop "Bestellen" in de AlertDialog wordt ingedrukt
                         db2.doDbConnect() { ->
                             db2.insertBestelling(gerechtenGeselecteerd)
-
                         }
                         gerechtenGeselecteerd.clear()
                         gerechtenA.clear()

@@ -3,9 +3,9 @@ package com.example.tapasrestaurant
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class Betaalsysteem : AppCompatActivity() {
+class WaitForPaymentVerifyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_betaalsysteem)
+        setContentView(R.layout.activity_wait_for_payment_verify)
     }
 }
