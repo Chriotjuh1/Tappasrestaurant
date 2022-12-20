@@ -3,6 +3,10 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.example.tapasrestaurant">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <application
             android:allowBackup="true"
             android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,10 +18,13 @@
             android:theme="@style/Theme.Tapasrestaurant.NoActionBar"
             tools:targetApi="31">
         <activity
-                android:name=".MainActivity"
+                android:name=".WaitForPaymentVerifyActivity"
                 android:exported="false"/>
         <activity
-                android:name=".SecondActivity"
+                android:name=".MenuActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".PayoutActivity"
                 android:exported="false"/>
         <activity
                 android:name=".StartActivity"

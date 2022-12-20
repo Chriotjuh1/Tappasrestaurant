@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MenuActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/constraintLayout2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+            <Button
+                    android:text="@string/terug"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/btnTerug"
+                    android:backgroundTint="#FF5722" android:textColor="#263238"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.95"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.976"/>
+            <Button
+                    android:text="@string/contant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/btnContant"
+                    android:backgroundTint="#F44336" android:textColor="#263238"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.239"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.875"/>
+            <Button
+                    android:text="@string/pin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/btnPin"
+                    android:backgroundTint="#F44336" android:textColor="#263238"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.796"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.875"/>
+            <TextView
+                    android:text="@string/betalen_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/tvBetaalmethode"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintVertical_bias="0.79"/>
+            <TextView
+                    android:text="De kassabon:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/tvKassabon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="132dp" android:layout_marginBottom="500dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvBetaalmethode" android:textSize="24sp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
