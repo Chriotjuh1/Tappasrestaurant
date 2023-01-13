@@ -57,6 +57,7 @@ class MenuActivity : AppCompatActivity() {
         }
 
 
+
         lv.setOnItemClickListener { parent, view, position, id ->
 
 
@@ -100,92 +101,126 @@ class MenuActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
 
 
+
+
+
+
+
+
+
             with(builder)
-            {
-                setTitle("Bestelling")
-                setNegativeButton("TERUG", null)
+
+                    {
+                        setTitle("Bestelling")
+                        setNegativeButton("TERUG", null)
 
 
-                setItems(gerechtenGeselecteerd_Array) { dialog, which ->
+                        setItems(gerechtenGeselecteerd_Array) { dialog, which ->
 
-                    Toast.makeText(
-                        applicationContext,
-                        gerechtenGeselecteerd_Array[which] + " is clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-
+                            Toast.makeText(
+                                applicationContext,
+                                gerechtenGeselecteerd_Array[which] + " is clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
 
-// setPositiveButton("BESTELLEN", DialogInterface.OnClickListener {
-                // TODO save to DB insert
+                        // setPositiveButton("BESTELLEN", DialogInterface.OnClickListener {
+                        // TODO save to DB insert
 
-                // dialog, id ->
-
-
-                val listView: ListView = findViewById(R.id.orderView)
-                // val builder: AlertDialog.Builder =  (this) // Pas de context toe op de AlertDialog.Builder
-                builder.setPositiveButton("BESTELLEN",
+                        // dialog, id ->
 
 
+                        val listView: ListView = findViewById(R.id.orderView)
 
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // Deselecteer alle geselecteerde items in de lijst
-                        // wanneer de knop "Bestellen" in de AlertDialog wordt ingedrukt
-                        db2.doDbConnect() { ->
-                            db2.insertBestelling(gerechtenGeselecteerd)
+                        // val builder: AlertDialog.Builder =  (this) // Pas de context toe op de AlertDialog.Builder
+                        builder.setPositiveButton("BESTELLEN",
+
+
+                            DialogInterface.OnClickListener { dialog, id ->
+                                // Deselecteer alle geselecteerde items in de lijst
+                                // wanneer de knop "Bestellen" in de AlertDialog wordt ingedrukt
+                                db2.doDbConnect() { ->
+                                    db2.insertBestelling(gerechtenGeselecteerd)
+
+                                }
+                                gerechtenGeselecteerd.clear()
+                                gerechtenA.clear()
+                                listView.clearChoices() // Gebruik listView in plaats van lv
+                                listView.invalidateViews() // Gebruik listView in plaats van lv
+
+                                if (gerechtenGeselecteerd_Array.isEmpty()) {
+                                    val toast = Toast.makeText(applicationContext, "Er is geen gerecht geselecteerd", Toast.LENGTH_SHORT)
+                                    toast.show()
+                                } else {
+                                    val toast = Toast.makeText(applicationContext, "De bestelling is verzonden.", Toast.LENGTH_SHORT)
+                                    toast.show()
+                                }
+
+                            })
+
+                        val dialog: AlertDialog = builder.create()
+                        dialog.show()
+
+
+
+
+                        builder.setNeutralButton("Verwijderen") { dialog, id ->
+                            if (gerechtenGeselecteerd.isEmpty()) {
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Er is geen gerecht geselecteerd",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                Toast.makeText(
+                                    applicationContext,
+                                    "De gerechten zijn met succes verwijderd",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Toast.makeText(applicationContext, "Selecteer de bestellingen opnieuw", Toast.LENGTH_SHORT)
+                                    .show()
+                                gerechtenGeselecteerd.clear()
+                                gerechtenA.clear()
+                            }
+//                            Toast.makeText(
+//                                applicationContext,
+//                                "De gerechten zijn met succes verwijderd",
+//                                Toast.LENGTH_SHORT
+//                            ).show()
+//                            Toast.makeText(applicationContext, "Selecteer de bestellingen opnieuw", Toast.LENGTH_SHORT)
+//                                .show()
 
                         }
-                        gerechtenGeselecteerd.clear()
-                        gerechtenA.clear()
-                        listView.clearChoices() // Gebruik listView in plaats van lv
-                        listView.invalidateViews() // Gebruik listView in plaats van lv
-
-                    })
-                val dialog: AlertDialog = builder.create()
-                dialog.show()
 
 
+                        StartActivity()
 
 
-                    builder.setNeutralButton("Verwijderen") { dialog, id ->
-                        gerechtenGeselecteerd.clear()
-                        gerechtenA.clear()
+                        setNegativeButton("TERUG", null)
+                        dialog.cancel()
 
-                    }
-
-
-                    StartActivity()
-
-
-                    setNegativeButton("TERUG", null)
-                    dialog.cancel()
-
-                    show()
-
-
-                }
-
-
-
+                        show()
 
 
                     }
 
 
-                    //Creating dialog box
-                    //Creating dialog box
-                    //val alert = builder.create()
-                    //Setting the title manually
-                    //Setting the title manually
-                    //alert.setTitle("AlertDialogExample")
-                    //alert.show()
                 }
-                // Alert DialogBuilder is initialized
-                // val mAlertDialogBuilder = AlertDialog.Builder(this)
 
-                // Row layout is inflated and added to ListView
+
+                //Creating dialog box
+                //Creating dialog box
+                //val alert = builder.create()
+                //Setting the title manually
+                //Setting the title manually
+                //alert.setTitle("AlertDialogExample")
+                //alert.show()
+            }
+            // Alert DialogBuilder is initialized
+            // val mAlertDialogBuilder = AlertDialog.Builder(this)
+
+            // Row layout is inflated and added to ListView
 //                val mRowList = layoutInflater.inflate(R.layout.activity_listview, null)
 //                val mListView = mRowList.findViewById<ListView>(R.id.ListView2)
 //
@@ -195,14 +230,16 @@ class MenuActivity : AppCompatActivity() {
 //                mAdapter.notifyDataSetChanged()
 
 
-                // Row item is set as view in the Builder and the
-                // ListView is displayed in the Alert Dialog
+            // Row item is set as view in the Builder and the
+            // ListView is displayed in the Alert Dialog
 //                mAlertDialogBuilder.setView(mListView)
 //                val dialog = mAlertDialogBuilder.create()
 //                dialog.show()
-                //  }
+            //  }
 
-            }
+        }
+
+
 
 
 
