@@ -114,6 +114,10 @@ class MenuActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
+
+
+
 // setPositiveButton("BESTELLEN", DialogInterface.OnClickListener {
                 // TODO save to DB insert
 
@@ -121,23 +125,35 @@ class MenuActivity : AppCompatActivity() {
 
 
                 val listView: ListView = findViewById(R.id.orderView)
-                val builder: AlertDialog.Builder =  (this) // Pas de context toe op de AlertDialog.Builder
+                // val builder: AlertDialog.Builder =  (this) // Pas de context toe op de AlertDialog.Builder
                 builder.setPositiveButton("BESTELLEN",
+
+
 
                     DialogInterface.OnClickListener { dialog, id ->
                         // Deselecteer alle geselecteerde items in de lijst
                         // wanneer de knop "Bestellen" in de AlertDialog wordt ingedrukt
                         db2.doDbConnect() { ->
                             db2.insertBestelling(gerechtenGeselecteerd)
+
                         }
                         gerechtenGeselecteerd.clear()
                         gerechtenA.clear()
                         listView.clearChoices() // Gebruik listView in plaats van lv
                         listView.invalidateViews() // Gebruik listView in plaats van lv
+
                     })
                 val dialog: AlertDialog = builder.create()
                 dialog.show()
 
+
+
+
+                    builder.setNeutralButton("Verwijderen") { dialog, id ->
+                        gerechtenGeselecteerd.clear()
+                        gerechtenA.clear()
+
+                    }
 
 
                     StartActivity()
@@ -147,6 +163,8 @@ class MenuActivity : AppCompatActivity() {
                     dialog.cancel()
 
                     show()
+
+
                 }
 
 
