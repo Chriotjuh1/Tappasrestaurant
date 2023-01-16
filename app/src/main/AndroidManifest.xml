@@ -17,6 +17,11 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Tapasrestaurant.NoActionBar"
             tools:targetApi="31">
+
+
+        <activity
+                android:name=".ReceiptActivity"
+                android:exported="false"/>
         <activity
                 android:name=".WaitForPaymentVerifyActivity"
                 android:exported="false"/>

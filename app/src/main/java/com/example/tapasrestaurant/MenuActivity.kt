@@ -3,14 +3,16 @@ package com.example.tapasrestaurant
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ListView
-import android.widget.Toast
+import android.view.ViewGroup
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tapasrestaurant.entity.Gerecht
+import com.example.tapasrestaurant.entity.Receipt
+import com.example.tapasrestaurant.entity.ReceiptAdapter
 import com.example.tapasrestaurant.model.DbConnect
+import java.sql.ResultSet
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +45,19 @@ class MenuActivity : AppCompatActivity() {
 
                 // We need to get the name of gerechten out of gerechten
                 // Into the gerecht
+//                gerechten.forEach { gerecht ->
+//                    gerechtenA.add(gerecht.naam + " €" + gerecht.prijs)
+//                }
+//                arrayAdapter = ArrayAdapter(
+//                    this,
+//                    android.R.layout.simple_list_item_1, gerechtenA
+//                )
+//                lv.adapter = arrayAdapter
+//                lv2.adapter = arrayAdapter
+
                 gerechten.forEach { gerecht ->
-                    gerechtenA.add(gerecht.naam + " €" + gerecht.prijs)
+                    val priceRightAligned = String.format("%-60s %s", gerecht.naam, "€" + gerecht.prijs)
+                    gerechtenA.add(priceRightAligned)
                 }
                 arrayAdapter = ArrayAdapter(
                     this,
@@ -68,16 +81,26 @@ class MenuActivity : AppCompatActivity() {
             toast.show()
             gerechtenGeselecteerd.add(gerecht)
 
+
         }
 
 
-        // tabLayout = findViewById(R.id.)
+//        val recyclerView = findViewById<RecyclerView>(R.id.receiptRecycleView)
+//        val receipts = arrayListOf<Receipt>()
+//        // populate the receipts with data
+//        val adapter = ReceiptAdapter(receipts)
+//        recyclerView.adapter = adapter
+
         val btnBetalen: Button = findViewById(R.id.btnBetalen)
         btnBetalen.setOnClickListener {
             val intent = Intent(this, PayoutActivity::class.java)
             startActivity(intent)
             finish()
+
+
         }
+
+
         val btnBestellen: Button = findViewById(R.id.btnBestellen)
         btnBestellen.setOnClickListener {
             // TODO bestellen naar database...
@@ -110,134 +133,92 @@ class MenuActivity : AppCompatActivity() {
 
             with(builder)
 
-                    {
-                        setTitle("Bestelling")
-                        setNegativeButton("TERUG", null)
+            {
+                setTitle("Bestelling")
+                setNegativeButton("TERUG", null)
 
 
-                        setItems(gerechtenGeselecteerd_Array) { dialog, which ->
+                setItems(gerechtenGeselecteerd_Array) { dialog, which ->
 
-                            Toast.makeText(
-                                applicationContext,
-                                gerechtenGeselecteerd_Array[which] + " is clicked",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-
-
-                        // setPositiveButton("BESTELLEN", DialogInterface.OnClickListener {
-                        // TODO save to DB insert
-
-                        // dialog, id ->
-
-
-                        val listView: ListView = findViewById(R.id.orderView)
-
-                        // val builder: AlertDialog.Builder =  (this) // Pas de context toe op de AlertDialog.Builder
-                        builder.setPositiveButton("BESTELLEN",
-
-
-                            DialogInterface.OnClickListener { dialog, id ->
-                                // Deselecteer alle geselecteerde items in de lijst
-                                // wanneer de knop "Bestellen" in de AlertDialog wordt ingedrukt
-                                db2.doDbConnect() { ->
-                                    db2.insertBestelling(gerechtenGeselecteerd)
-
-                                }
-                                gerechtenGeselecteerd.clear()
-                                gerechtenA.clear()
-                                listView.clearChoices() // Gebruik listView in plaats van lv
-                                listView.invalidateViews() // Gebruik listView in plaats van lv
-
-                                if (gerechtenGeselecteerd_Array.isEmpty()) {
-                                    val toast = Toast.makeText(applicationContext, "Er is geen gerecht geselecteerd", Toast.LENGTH_SHORT)
-                                    toast.show()
-                                } else {
-                                    val toast = Toast.makeText(applicationContext, "De bestelling is verzonden.", Toast.LENGTH_SHORT)
-                                    toast.show()
-                                }
-
-                            })
-
-                        val dialog: AlertDialog = builder.create()
-                        dialog.show()
-
-
-
-
-                        builder.setNeutralButton("Verwijderen") { dialog, id ->
-                            if (gerechtenGeselecteerd.isEmpty()) {
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Er is geen gerecht geselecteerd",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            } else {
-                                Toast.makeText(
-                                    applicationContext,
-                                    "De gerechten zijn met succes verwijderd",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                Toast.makeText(applicationContext, "Selecteer de bestellingen opnieuw", Toast.LENGTH_SHORT)
-                                    .show()
-                                gerechtenGeselecteerd.clear()
-                                gerechtenA.clear()
-                            }
-//                            Toast.makeText(
-//                                applicationContext,
-//                                "De gerechten zijn met succes verwijderd",
-//                                Toast.LENGTH_SHORT
-//                            ).show()
-//                            Toast.makeText(applicationContext, "Selecteer de bestellingen opnieuw", Toast.LENGTH_SHORT)
-//                                .show()
-
-                        }
-
-
-                        StartActivity()
-
-
-                        setNegativeButton("TERUG", null)
-                        dialog.cancel()
-
-                        show()
-
-
-                    }
-
-
+                    Toast.makeText(
+                        applicationContext,
+                        gerechtenGeselecteerd_Array[which] + " is clicked",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
 
-                //Creating dialog box
-                //Creating dialog box
-                //val alert = builder.create()
-                //Setting the title manually
-                //Setting the title manually
-                //alert.setTitle("AlertDialogExample")
-                //alert.show()
+                // setPositiveButton("BESTELLEN", DialogInterface.OnClickListener {
+                // TODO save to DB insert
+
+                // dialog, id ->
+
+
+                val listView: ListView = findViewById(R.id.orderView)
+
+                // val builder: AlertDialog.Builder =  (this) // Pas de context toe op de AlertDialog.Builder
+                builder.setPositiveButton("BESTELLEN",
+
+
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // Deselecteer alle geselecteerde items in de lijst
+                        // wanneer de knop "Bestellen" in de AlertDialog wordt ingedrukt
+                        db2.doDbConnect() { ->
+                            db2.insertBestelling(gerechtenGeselecteerd)
+
+                        }
+                        gerechtenGeselecteerd.clear()
+                        gerechtenA.clear()
+                        listView.clearChoices() // Gebruik listView in plaats van lv
+                        listView.invalidateViews() // Gebruik listView in plaats van lv
+
+                        if (gerechtenGeselecteerd_Array.isEmpty()) {
+                            val toast = Toast.makeText(
+                                applicationContext,
+                                "Er is geen gerecht geselecteerd",
+                                Toast.LENGTH_SHORT
+                            )
+                            toast.show()
+                        } else {
+                            val toast =
+                                Toast.makeText(applicationContext, "De bestelling is verzonden.", Toast.LENGTH_SHORT)
+                            toast.show()
+                        }
+
+                    })
+
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
+
+                builder.setNeutralButton("Verwijderen") { dialog, id ->
+                    if (gerechtenGeselecteerd.isEmpty()) {
+                        Toast.makeText(
+                            applicationContext,
+                            "Er is geen gerecht geselecteerd",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "De gerechten zijn met succes verwijderd",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        Toast.makeText(applicationContext, "Selecteer de bestellingen opnieuw", Toast.LENGTH_SHORT)
+                            .show()
+                        gerechtenGeselecteerd.clear()
+                        gerechtenA.clear()
+                    }
+                }
+                StartActivity()
+                setNegativeButton("TERUG", null)
+                dialog.cancel()
+                show()
             }
-            // Alert DialogBuilder is initialized
-            // val mAlertDialogBuilder = AlertDialog.Builder(this)
-
-            // Row layout is inflated and added to ListView
-//                val mRowList = layoutInflater.inflate(R.layout.activity_listview, null)
-//                val mListView = mRowList.findViewById<ListView>(R.id.ListView2)
-//
-//                // Adapter is created and applied to ListView
-//                val mAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, gerechtenGeselecteerd)
-//                mListView.adapter = mAdapter
-//                mAdapter.notifyDataSetChanged()
-
-
-            // Row item is set as view in the Builder and the
-            // ListView is displayed in the Alert Dialog
-//                mAlertDialogBuilder.setView(mListView)
-//                val dialog = mAlertDialogBuilder.create()
-//                dialog.show()
-            //  }
-
         }
+    }
+}
+
+
 
 
 
