@@ -40,7 +40,7 @@ class PayoutActivity : Activity() {
             gerechtenReceipt.forEach { gerecht ->
                 gerechtenGeselecteerdArray.add(gerecht)
             }
-            
+
             val adapter = ReceiptAdapter(gerechtenGeselecteerdArray)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(this)
