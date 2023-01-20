@@ -2,9 +2,12 @@ package com.example.tapasrestaurant.entity;
 
 public class Receipt {
     private String name;
-    private String price;
+    private double price;
+    private double totalAmount;
 
-    public Receipt(String name, String price) {
+    private int quantity;
+
+    public Receipt(String name, double price) {
         this.name = name;
         this.price = price;
     }
@@ -13,7 +16,16 @@ public class Receipt {
         return name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
 }
+

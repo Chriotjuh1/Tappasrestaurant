@@ -102,13 +102,16 @@ public class DbConnect  {
                         int id = rs.getInt("productid");
                         String  name = rs.getString("naam");
                         String price = rs.getString("prijs");
+                       // String imageUrl = rs.getString("image_url");
                         // Dit is een gerechten object/element die ik vul met de data van de database
                         Gerecht g = new Gerecht();
                         g.setNaam(name);
                         g.setProductid(id);
                         g.setPrijs(price);
+                       // g.setImageUrl(imageUrl);
                         // Adding element gerecht to the gerechten ArrayList
                         gerechten.add(g);
+
                     }
                     // Callback function to return (we could add gerechten to this callback function)
                     callback.callbackCall(gerechten);
@@ -119,6 +122,7 @@ public class DbConnect  {
                     e.printStackTrace();
                 }
             }
+
 
         });
         thread.start();
@@ -142,8 +146,38 @@ public class DbConnect  {
                     String sql = "";
                     for (int i = 0; i < gerechten.size(); i++) {
                         Gerecht g = (Gerecht) gerechten.get(i);
-                        sql += "INSERT INTO public.bestelling (product_id, tafel_id, \"Prijs\") VALUES (" + g.getProduct_Id() + ", 1, " + g.getPrijs() + ");";
+                        sql += "INSERT INTO public.bestelling (product_id, tafel_id, \"Prijs\") VALUES (" + g.getProductid() + ", 1, " + g.getPrijs() + ");";
                     }
+                    stmt.executeUpdate( sql );
+                    stmt.close();
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+        try
+        {
+            thread.join();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            this.status = false;
+        }
+    }
+
+    public void insertTotaalBedrag(double totaalbedrag)
+    {
+        Thread thread = new Thread(new Runnable() {
+            @Override public void run()
+            {
+                try {
+                    stmt = connection.createStatement();
+                    String sql = "INSERT INTO public.betaling(\n" +
+                            "\t\"Totaalbedrag\")\n" +
+                            "\tVALUES ('"+ totaalbedrag + "');";
                     stmt.executeUpdate( sql );
                     stmt.close();
                     connection.close();
@@ -193,34 +227,7 @@ public class DbConnect  {
             this.status = false;
         }
     }
-
-
-//    public class TableManager {
-//        private String getDeviceId() {
-//            Context context = null;
-//
-//            return Settings.Secure.getString(context.getContentResolver(),
-//                    Settings.Secure.ANDROID_ID);
-//        }
-
-//        public void useDeviceIdAsTableId(Connection connection) throws SQLException {
-//            String tafel_id = getDeviceId();
-//
-//            try {
-//                // Voer een SQL-query uit om een nieuwe tafel toe te voegen aan de database
-//                // met het device ID als tafel ID
-//                Statement statement = connection.createStatement();
-//                String sql = "INSERT INTO bestelling (id, name) VALUES (" + tafel_id + ", 'Tafel " + tafel_id + "')";
-//                statement.executeUpdate(sql);
-//            } catch (SQLException e) {
-//                // Als de tafel al bestaat in de database, voer dan een update uit om de naam van de tafel
-//                // te wijzigen naar 'Table $deviceId'
-//                Statement statement = connection.createStatement();
-//                String sql = "UPDATE bestelling SET name = 'Tafel " + tafel_id + "' WHERE id = " + tafel_id;
-//                statement.executeUpdate(sql);
-//            }
-//        }
-    }
+}
 
 
 

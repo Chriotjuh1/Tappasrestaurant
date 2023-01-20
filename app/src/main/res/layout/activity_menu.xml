@@ -17,7 +17,7 @@
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="1.0"
         >
             <Button
-                    android:text="@string/bestellen"
+                    android:text="Place order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btnBestellen"
                     android:backgroundTint="#FF5722" android:textColor="#263238"
@@ -32,20 +32,25 @@
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/btnBetalen"
                     app:layout_constraintVertical_bias="1.0" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
+<!--                <ImageView-->
+<!--                        android:id="@+id/listview_image"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
+                <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dishes"/>
 
                 <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Gerechten"/>
+                        android:text="Drinks"
+                        android:id="@+id/drinks_tab"/>
 
-                <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Dranken"/>
 
             </com.google.android.material.tabs.TabLayout>
             <Button
-                    android:text="@string/betalen"
+                    android:text="PAYMENT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/btnBetalen"
                     android:backgroundTint="#FF5722" android:textColor="#263238"

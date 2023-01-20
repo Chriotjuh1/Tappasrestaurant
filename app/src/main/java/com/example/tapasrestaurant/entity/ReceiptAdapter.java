@@ -11,28 +11,35 @@ import java.util.ArrayList;
 
 public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.ReceiptViewHolder> {
 
-    private ArrayList<Receipt> mReceipts;
+    private int totalQuantity;
+    private ArrayList<Gerecht> mReceipts;
 
-    public ReceiptAdapter(ArrayList<Receipt> receipts) {
+    public ReceiptAdapter(ArrayList<Gerecht> receipts) {
         this.mReceipts = receipts;
     }
 
     @Override
     public ReceiptViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_receipt, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gerecht_item, parent, false);
         return new ReceiptViewHolder(view);
+
+
+
+
     }
 
     @Override
     public void onBindViewHolder(ReceiptViewHolder holder, int position) {
-        Receipt receipt = mReceipts.get(position);
+        Gerecht receipt = mReceipts.get(position);
         holder.bind(receipt);
+
 
     }
 
     @Override
     public int getItemCount() {
         return mReceipts.size();
+
     }
 
     public static class ReceiptViewHolder extends RecyclerView.ViewHolder {
@@ -43,18 +50,24 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.ReceiptV
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
+
                         //TODO: handle the click event here
+
+
 
                     }
                 }
             });
         }
-        public void bind(Receipt receipt) {
-            TextView name = itemView.findViewById(R.id.text_view_name);
-            name.setText(receipt.getName());
-            TextView price = itemView.findViewById(R.id.text_view_price);
-            price.setText(receipt.getPrice());
+        public void bind(Gerecht receipt) {
+            TextView name = itemView.findViewById(R.id.gerecht_naam);
+            name.setText(receipt.getNaam());
+            TextView price = itemView.findViewById(R.id.gerecht_prijs);
+            price.setText(receipt.getPrijs());
         }
 
     }
+
 }
+
+
