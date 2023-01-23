@@ -1,6 +1,7 @@
 package com.example.tapasrestaurant.model;
 
 import android.content.Context;
+import com.example.tapasrestaurant.R;
 import com.example.tapasrestaurant.entity.Gerecht;
 
 import java.sql.Connection;
@@ -31,6 +32,11 @@ public class DbConnect  {
     private final String user = "softwareguys";
     private final String pass = "T^jTc4rv*!M6FKYVybFbuQG&v^HVkJ$KfRd1PCuAc$$@rEVvrJvKH%9#7gFQ";
     private String url = "jdbc:postgresql://%s:%d/%s";
+
+    Context context;
+
+    public static final int tafelId = 1;
+
 
     private boolean status;
     public String statusS;
@@ -146,7 +152,7 @@ public class DbConnect  {
                     String sql = "";
                     for (int i = 0; i < gerechten.size(); i++) {
                         Gerecht g = (Gerecht) gerechten.get(i);
-                        sql += "INSERT INTO public.bestelling (product_id, tafel_id, \"Prijs\") VALUES (" + g.getProductid() + ", 1, " + g.getPrijs() + ");";
+                        sql += "INSERT INTO public.bestelling (product_id, tafel_id, \"Prijs\") VALUES (" + g.getProductid() + ", " + tafelId + " , " + g.getPrijs() + ");";
                     }
                     stmt.executeUpdate( sql );
                     stmt.close();
@@ -198,6 +204,8 @@ public class DbConnect  {
         }
     }
 
+
+
     public void insertPayoutWaitlist(String betaalmethode)
     {
         Thread thread = new Thread(new Runnable() {
@@ -207,7 +215,7 @@ public class DbConnect  {
                     stmt = connection.createStatement();
                     String sql = "INSERT INTO public.betaling(\n" +
                             "\t\"Betaalmethode\", \"Tafel_ID\", \"Status\")\n" +
-                            "\tVALUES ('"+ betaalmethode + "', 1, false);";
+                            "\tVALUES ('"+ betaalmethode + "', tafel_id, false);";
                     stmt.executeUpdate( sql );
                     stmt.close();
                     connection.close();

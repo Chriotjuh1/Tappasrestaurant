@@ -24,11 +24,11 @@
             app:layout_constraintBottom_toTopOf="@+id/start_btn" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintVertical_bias="0.85"/>
     <ImageView
-            android:layout_height="382dp" app:srcCompat="@mipmap/ic_launcher_tapppassssssssssss_foreground"
+            android:layout_height="265dp" app:srcCompat="@mipmap/ic_launcher_tapppassssssssssss_foreground"
             android:id="@+id/lastapasimage" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0" android:layout_width="338dp"
-            app:layout_constraintHorizontal_bias="0.493"/>
+            app:layout_constraintVertical_bias="0.0" android:layout_width="336dp"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

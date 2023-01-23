@@ -27,18 +27,5 @@ public class ReceiptViewHolder extends RecyclerView.ViewHolder {
         mTotalAmountTextView = itemView.findViewById(R.id.text_view_totaalprijs);
     }
 }
-//    public void bind(Gerecht receipt, ArrayList<Gerecht> receipts) {
-//        TextView name = itemView.findViewById(R.id.gerecht_naam);
-//        name.setText(receipt.getNaam());
-//        TextView price = itemView.findViewById(R.id.gerecht_prijs);
-//        price.setText(receipt.getPrijs());
-//        mTotalAmount += receipt.getPrice();
-//        if (getLayoutPosition() == receipts.size() - 1) {
-//            mTotalAmountTextView.setText(String.format("Totaal: € %.2f", mTotalAmount));
-//            mTotalAmountTextView.setVisibility(View.VISIBLE);
-//        }
-//
-//    }
-//}
 
 

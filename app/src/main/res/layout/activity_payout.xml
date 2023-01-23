@@ -83,7 +83,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="@+id/tvBetaalmethode"
                     app:layout_constraintTop_toBottomOf="@+id/tvKassabon" app:layout_constraintHorizontal_bias="0.632"
-                    app:layout_constraintVertical_bias="0.31"/>
+                    app:layout_constraintVertical_bias="0.386"/>
             <TextView
                     android:id="@+id/text_view_totaalprijs"
                     android:layout_width="0dp"

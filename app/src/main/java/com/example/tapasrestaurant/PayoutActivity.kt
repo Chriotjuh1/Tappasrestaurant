@@ -3,6 +3,7 @@ package com.example.tapasrestaurant
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +31,8 @@ class PayoutActivity : Activity() {
         setContentView(R.layout.activity_payout)
         val gerechtenGeselecteerdArray = SelectedItems.instance.gerechtenGeselecteerdArray
         val adapter = ReceiptAdapter(gerechtenGeselecteerdArray)
+        val gerechtenQuantity = HashMap<Gerecht, Int>()
+
 
 
         try {
@@ -50,8 +53,7 @@ class PayoutActivity : Activity() {
             val formattedTotalPrice = formatter.format(totaalPrijs)
             val textViewTotaalprijs = findViewById<TextView>(R.id.text_view_totaalprijs)
             textViewTotaalprijs.text = "Total Amount: €$formattedTotalPrice"
-
-
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } catch (e: Exception) {
             Log.e("Error", "Er is een fout opgetreden: ${e.message}")
 

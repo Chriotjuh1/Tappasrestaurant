@@ -11,6 +11,7 @@ import com.example.tapasrestaurant.entity.Gerecht
 import com.example.tapasrestaurant.model.DbConnect
 
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +28,7 @@ class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // Opstarten van view
         var lv = findViewById<ListView>(R.id.orderView)
         var lv2 = findViewById<ListView>(R.id.orderView)
@@ -68,6 +69,8 @@ class MenuActivity : AppCompatActivity() {
                 }
 
         }
+
+
 
         val imageView = findViewById<ImageView>(androidx.appcompat.R.id.list_item)
         lv.setOnItemClickListener { parent, view, position, id ->
@@ -129,6 +132,8 @@ class MenuActivity : AppCompatActivity() {
             }
             val gerechtenGeselecteerd_Array: Array<String> = gerechtenA.toTypedArray()
             val builder = AlertDialog.Builder(this)
+
+
 
 
 
