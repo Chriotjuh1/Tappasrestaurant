@@ -35,7 +35,7 @@ public class DbConnect  {
 
     Context context;
 
-    public static final int tafelId = 1;
+    public static final int tafelId = 2;
 
 
     private boolean status;
@@ -215,7 +215,7 @@ public class DbConnect  {
                     stmt = connection.createStatement();
                     String sql = "INSERT INTO public.betaling(\n" +
                             "\t\"Betaalmethode\", \"Tafel_ID\", \"Status\")\n" +
-                            "\tVALUES ('"+ betaalmethode + "', tafel_id, false);";
+                            "\tVALUES ('"+ betaalmethode + "', '"+ tafelId + "', false);";
                     stmt.executeUpdate( sql );
                     stmt.close();
                     connection.close();
