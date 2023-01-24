@@ -35,7 +35,7 @@ public class DbConnect  {
 
     Context context;
 
-    public static final int tafelId = 2;
+    public static final int tafelId = 1;
 
 
     private boolean status;
@@ -152,7 +152,7 @@ public class DbConnect  {
                     String sql = "";
                     for (int i = 0; i < gerechten.size(); i++) {
                         Gerecht g = (Gerecht) gerechten.get(i);
-                        sql += "INSERT INTO public.bestelling (product_id, tafel_id, \"Prijs\") VALUES (" + g.getProductid() + ", " + tafelId + " , " + g.getPrijs() + ");";
+                        sql += "INSERT INTO public.bestelling (product_id, tafel_id, \"Prijs\", \"Status\") VALUES (" + g.getProductid() + ", " + tafelId + " , " + g.getPrijs() + ", 'Sent');";
                     }
                     stmt.executeUpdate( sql );
                     stmt.close();

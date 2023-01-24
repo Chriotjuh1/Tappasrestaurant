@@ -32,12 +32,11 @@ class PayoutActivity : Activity() {
         val gerechtenGeselecteerdArray = SelectedItems.instance.gerechtenGeselecteerdArray
         val adapter = ReceiptAdapter(gerechtenGeselecteerdArray)
         val gerechtenQuantity = HashMap<Gerecht, Int>()
-
-
+        val text = "You don't have anything to payout!"
+        val duration = Toast.LENGTH_SHORT
+        val toasty = Toast.makeText(applicationContext, text, duration)
 
         try {
-
-
             val gerechtenReceipt = intent.getSerializableExtra("gerechtenReceipt") as ArrayList<Gerecht>
             val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
             gerechtenReceipt.forEach { gerecht ->
@@ -56,15 +55,6 @@ class PayoutActivity : Activity() {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } catch (e: Exception) {
             Log.e("Error", "Er is een fout opgetreden: ${e.message}")
-
-
-
-//            val adapter = ReceiptAdapter(receipts)
-//            recyclerView.adapter = adapter
-//            recyclerView.layoutManager = LinearLayoutManager(this)
-//            adapter.notifyDataSetChanged()
-
-
         }
 
         val btnOpenActivity: Button = findViewById(R.id.btnTerug)
@@ -74,21 +64,29 @@ class PayoutActivity : Activity() {
 
 
         btnContant.setOnClickListener {
-            val intent = Intent(this, WaitForPaymentVerifyActivity::class.java)
-            db.doDbConnect() { ->
-                db.insertPayoutWaitlist("C")
+            if (gerechtenGeselecteerdArray.isNotEmpty()) {
+                val intent = Intent(this, WaitForPaymentVerifyActivity::class.java)
+                db.doDbConnect() { ->
+                    db.insertPayoutWaitlist("C")
+                }
+                startActivity(intent)
+                finish()
+            } else {
+                toasty.show()
             }
-            startActivity(intent)
-            finish()
         }
 
         btnPin.setOnClickListener {
-            val intent = Intent(this, WaitForPaymentVerifyActivity::class.java)
-            db.doDbConnect() { ->
-                db.insertPayoutWaitlist("P")
+            if (gerechtenGeselecteerdArray.isNotEmpty()) {
+                val intent = Intent(this, WaitForPaymentVerifyActivity::class.java)
+                db.doDbConnect() { ->
+                    db.insertPayoutWaitlist("P")
+                }
+                startActivity(intent)
+                finish()
+            } else {
+                toasty.show()
             }
-            startActivity(intent)
-            finish()
         }
 
         btnOpenActivity.setOnClickListener {
@@ -96,12 +94,6 @@ class PayoutActivity : Activity() {
             startActivity(intent)
             finish()
         }
-
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-
-
-
-        //Bijvoorbeeld als gerechtenGeselecteerdArray wordt bijgewerkt in een andere functie
 
         }
 }

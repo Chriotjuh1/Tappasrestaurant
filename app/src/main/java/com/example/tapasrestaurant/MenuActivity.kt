@@ -54,17 +54,9 @@ class MenuActivity : AppCompatActivity() {
                     val priceRightAligned = String.format("%-60s %s", gerecht.naam, "€" + gerecht.prijs)
                     gerechtenA.add(priceRightAligned)
                 }
-//                arrayAdapter = ArrayAdapter(
-//                    this,
-//                    android.R.layout.simple_list_item_1, gerechtenA
-//                )
+
                 adapter = MyAdapter(this, gerechten)
                 lv.adapter = adapter
-                //lv.adapter = arrayAdapter
-                //lv2.adapter = arrayAdapter
-
-
-
 
                 }
 
@@ -77,26 +69,10 @@ class MenuActivity : AppCompatActivity() {
 
 
             val gerecht = gerechtenView[position]
-//            val imageUrl: String = gerecht.getImageUrl()
-//            Glide.with(this).load(imageUrl).into(imageView)
-
             val toast = Toast.makeText(applicationContext, "Selected: " + gerecht.naam, Toast.LENGTH_SHORT)
             toast.show()
             gerechtenGeselecteerd.add(gerecht)
-
-//
-//            val imageView: ImageView = findViewById(R.id.imageView)
-//            val imageUrl: String = gerecht.getImageUrl()
-//            Glide.with(this).load(imageUrl).into(imageView)
-
-
         }
-
-//        val recyclerView = findViewById<RecyclerView>(R.id.receiptRecycleView)
-//        val receipts = arrayListOf<Receipt>()
-//        // populate the receipts with data
-//        val adapter = ReceiptAdapter(receipts)
-//        recyclerView.adapter = adapter
 
         val btnBetalen: Button = findViewById(R.id.btnBetalen)
         btnBetalen.setOnClickListener {
@@ -106,24 +82,13 @@ class MenuActivity : AppCompatActivity() {
             intent.putExtras(bundle)
             startActivity(intent)
             finish()
-
-
         }
 
         val btnBestellen: Button = findViewById(R.id.btnBestellen)
         btnBestellen.setOnClickListener {
             // TODO bestellen naar database...
 
-            var db2 = DbConnect();
-
-
-            //val mButton = findViewById<Button>(R.id.btnBestellen)
-
-            // When Button is clicked,
-            //mButton.setOnClickListener {
-
-            // val items = arrayOf("Red", "Orange", "Yellow", "Blue")
-
+            var db2 = DbConnect()
             var gerechtenA = arrayListOf<String>()
             // We need to get the name of gerechten out of gerechten
             // Into the gerecht
@@ -133,22 +98,11 @@ class MenuActivity : AppCompatActivity() {
             val gerechtenGeselecteerd_Array: Array<String> = gerechtenA.toTypedArray()
             val builder = AlertDialog.Builder(this)
 
-
-
-
-
-
-
-
-
-
-
             with(builder)
 
             {
                 setTitle("Order List")
                 setNegativeButton("TERUG", null)
-
 
                 setItems(gerechtenGeselecteerd_Array) { dialog, which ->
 
@@ -159,12 +113,7 @@ class MenuActivity : AppCompatActivity() {
                     ).show()
                 }
 
-
-                // setPositiveButton("BESTELLEN", DialogInterface.OnClickListener {
                 // TODO save to DB insert
-
-                // dialog, id ->
-
 
                 val listView: ListView = findViewById(R.id.orderView)
 
@@ -266,13 +215,9 @@ class MyAdapter(private val context: Context, private val arrayList: java.util.A
         prijs = convertView.findViewById(R.id.prijs)
         image = convertView.findViewById(R.id.image_dish)
 
-//        contactNum = convertView.findViewById(R.id.mobileNum)
-//        serialNum.text = " " + arrayList[position].num
         naam.text = arrayList[position].naam
         prijs.text ="€" + arrayList[position].prijs
-//        val imageName ="hotdog"
-//        image.setImageResource(context.resources.getIdentifier(imageName, "drawable", context.packageName))
-        // image.setImageDrawable()
+
         if (position == 0) {
             image.setImageResource(R.drawable.spareribssss)
         } else if (position == 1) {
@@ -287,7 +232,6 @@ class MyAdapter(private val context: Context, private val arrayList: java.util.A
             image.setImageResource(R.drawable.gehaktt)
         }
 
-//        contactNum.text = arrayList[position].mobileNumber
             return convertView
 
         }

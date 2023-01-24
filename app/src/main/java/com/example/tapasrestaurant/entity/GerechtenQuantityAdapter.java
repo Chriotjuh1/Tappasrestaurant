@@ -23,11 +23,8 @@ public class GerechtenQuantityAdapter extends RecyclerView.Adapter<GerechtenQuan
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Gerecht gerecht = (Gerecht) gerechtenQuantity.keySet().toArray()[position];
-        int quantity = gerechtenQuantity.get(gerecht);
-        holder.naam.setText(gerecht.getNaam() + " x" + quantity);
+        holder.naam.setText(gerecht.getNaam() + " x" + gerechtenQuantity.get(gerecht));
         holder.prijs.setText("€" + gerecht.getPrijs());
-        holder.quantity.setText(" x" + quantity);
-
     }
 
     @Override
@@ -38,7 +35,6 @@ public class GerechtenQuantityAdapter extends RecyclerView.Adapter<GerechtenQuan
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView naam;
         public TextView prijs;
-        public TextView quantity;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -52,5 +48,4 @@ public class GerechtenQuantityAdapter extends RecyclerView.Adapter<GerechtenQuan
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gerecht_item, parent, false);
         return new ViewHolder(view);
     }
-
 }
