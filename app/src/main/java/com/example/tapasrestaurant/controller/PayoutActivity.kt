@@ -1,4 +1,4 @@
-package com.example.tapasrestaurant
+package com.example.tapasrestaurant.controller
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -13,14 +13,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tapasrestaurant.MenuActivity
+import com.example.tapasrestaurant.R
 import com.example.tapasrestaurant.entity.Gerecht
-import com.example.tapasrestaurant.entity.Receipt
 import com.example.tapasrestaurant.entity.ReceiptAdapter
 import com.example.tapasrestaurant.entity.SelectedItems
 import com.example.tapasrestaurant.model.DbConnect
 import java.text.DecimalFormat
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class PayoutActivity : Activity() {
 
@@ -36,9 +35,11 @@ class PayoutActivity : Activity() {
         val duration = Toast.LENGTH_SHORT
         val toasty = Toast.makeText(applicationContext, text, duration)
 
+
         try {
             val gerechtenReceipt = intent.getSerializableExtra("gerechtenReceipt") as ArrayList<Gerecht>
             val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+            val duplicatesMap = gerechtenReceipt.groupBy { it }.mapValues { gerechtenReceipt.count { it == it } }
             gerechtenReceipt.forEach { gerecht ->
                 gerechtenGeselecteerdArray.add(gerecht)
             }
@@ -94,8 +95,7 @@ class PayoutActivity : Activity() {
             startActivity(intent)
             finish()
         }
-
-        }
+    }
 }
 
 

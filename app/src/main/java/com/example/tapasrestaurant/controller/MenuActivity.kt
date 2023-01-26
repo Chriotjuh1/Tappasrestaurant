@@ -1,24 +1,20 @@
 package com.example.tapasrestaurant
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.os.Bundle
-import android.widget.*
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.example.tapasrestaurant.entity.Gerecht
-import com.example.tapasrestaurant.model.DbConnect
-
-import android.content.Context
 import android.content.pm.ActivityInfo
-import android.graphics.drawable.Drawable
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import com.example.tapasrestaurant.controller.PayoutActivity
+import com.example.tapasrestaurant.controller.StartActivity
+import com.example.tapasrestaurant.entity.Gerecht
+import com.example.tapasrestaurant.model.DbConnect
 
 class MenuActivity : AppCompatActivity() {
 
@@ -62,12 +58,8 @@ class MenuActivity : AppCompatActivity() {
 
         }
 
-
-
         val imageView = findViewById<ImageView>(androidx.appcompat.R.id.list_item)
         lv.setOnItemClickListener { parent, view, position, id ->
-
-
             val gerecht = gerechtenView[position]
             val toast = Toast.makeText(applicationContext, "Selected: " + gerecht.naam, Toast.LENGTH_SHORT)
             toast.show()

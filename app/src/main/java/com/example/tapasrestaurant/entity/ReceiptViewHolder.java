@@ -5,8 +5,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.tapasrestaurant.R;
 
-import java.util.ArrayList;
-
 public class ReceiptViewHolder extends RecyclerView.ViewHolder {
     private TextView mTotalAmountTextView;
     private double mTotalAmount;

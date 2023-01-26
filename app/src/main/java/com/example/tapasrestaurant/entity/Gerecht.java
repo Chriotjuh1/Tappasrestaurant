@@ -91,7 +91,6 @@ public class Gerecht implements Parcelable {
         dest.writeString(naam);
         dest.writeString(prijs);
         dest.writeInt(tafel);
-
     }
 
 
