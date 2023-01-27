@@ -20,17 +20,13 @@ class MenuActivity : AppCompatActivity() {
 
     var adapter: MyAdapter? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // Opstarten van view
         var lv = findViewById<ListView>(R.id.orderView)
-        var lv2 = findViewById<ListView>(R.id.orderView)
-
-        var arrayAdapter: ArrayAdapter<*>
-
+        
         // Opstarten van model -> (dbconnectie in model-file?)
         var db = DbConnect();
         var gerechtenView = ArrayList<Gerecht>()
@@ -217,7 +213,9 @@ class MyAdapter(private val context: Context, private val arrayList: java.util.A
             "Chicken" -> image.setImageResource(R.drawable.chickenn)
             "Minced Meat" -> image.setImageResource(R.drawable.gehaktt)
         }
+
         return convertView
+
         }
     }
 
