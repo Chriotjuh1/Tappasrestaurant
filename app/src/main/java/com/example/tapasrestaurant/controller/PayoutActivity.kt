@@ -63,32 +63,23 @@ class PayoutActivity : Activity() {
         val btnPin: Button = findViewById(R.id.btnPin)
         val db = DbConnect()
 
-
-        btnContant.setOnClickListener {
-            if (gerechtenGeselecteerdArray.isNotEmpty()) {
-                val intent = Intent(this, WaitForPaymentVerifyActivity::class.java)
-                db.doDbConnect() { ->
-                    db.insertPayoutWaitlist("C")
+        fun handlePayment(button: Button, paymentType: String) {
+            button.setOnClickListener {
+                if (gerechtenGeselecteerdArray.isNotEmpty()) {
+                    val intent = Intent(this, WaitForPaymentVerifyActivity::class.java)
+                    db.doDbConnect() { ->
+                        db.insertPayoutWaitlist(paymentType)
+                    }
+                    startActivity(intent)
+                    finish()
+                } else {
+                    toasty.show()
                 }
-                startActivity(intent)
-                finish()
-            } else {
-                toasty.show()
             }
         }
 
-        btnPin.setOnClickListener {
-            if (gerechtenGeselecteerdArray.isNotEmpty()) {
-                val intent = Intent(this, WaitForPaymentVerifyActivity::class.java)
-                db.doDbConnect() { ->
-                    db.insertPayoutWaitlist("P")
-                }
-                startActivity(intent)
-                finish()
-            } else {
-                toasty.show()
-            }
-        }
+        handlePayment(btnContant, "C")
+        handlePayment(btnPin, "P")
 
         btnOpenActivity.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)

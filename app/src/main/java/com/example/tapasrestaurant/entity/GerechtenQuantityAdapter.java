@@ -44,7 +44,6 @@ public class GerechtenQuantityAdapter extends RecyclerView.Adapter<GerechtenQuan
         public TextView prijs;
 
         public TextView quantity;
-        public BreakIterator gerechtTextView;
 
 
         public ViewHolder(View itemView) {

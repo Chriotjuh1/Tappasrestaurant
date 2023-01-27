@@ -202,7 +202,6 @@ class MyAdapter(private val context: Context, private val arrayList: java.util.A
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         var convertView = convertView
         convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false)
-//        serialNum = convertView.findViewById(R.id.serialNumber)
         naam = convertView.findViewById(R.id.naam)
         prijs = convertView.findViewById(R.id.prijs)
         image = convertView.findViewById(R.id.image_dish)

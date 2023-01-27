@@ -1,21 +1,10 @@
 package com.example.tapasrestaurant.model;
 
 import android.content.Context;
-import com.example.tapasrestaurant.R;
 import com.example.tapasrestaurant.entity.Gerecht;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
-import java.sql.PreparedStatement;
-import android.provider.Settings;
-import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.SQLException;
 public class DbConnect  {
     public Connection connection;
 
@@ -36,7 +25,6 @@ public class DbConnect  {
     Context context;
 
     public static final int tafelId = 1;
-
 
     private boolean status;
     public String statusS;
@@ -173,38 +161,6 @@ public class DbConnect  {
             this.status = false;
         }
     }
-
-    public void insertTotaalBedrag(double totaalbedrag)
-    {
-        Thread thread = new Thread(new Runnable() {
-            @Override public void run()
-            {
-                try {
-                    stmt = connection.createStatement();
-                    String sql = "INSERT INTO public.betaling(\n" +
-                            "\t\"Totaalbedrag\")\n" +
-                            "\tVALUES ('"+ totaalbedrag + "');";
-                    stmt.executeUpdate( sql );
-                    stmt.close();
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.start();
-        try
-        {
-            thread.join();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            this.status = false;
-        }
-    }
-
-
 
     public void insertPayoutWaitlist(String betaalmethode)
     {
