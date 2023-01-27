@@ -209,22 +209,15 @@ class MyAdapter(private val context: Context, private val arrayList: java.util.A
         naam.text = arrayList[position].naam
         prijs.text ="€" + arrayList[position].prijs
 
-        if (position == 0) {
-            image.setImageResource(R.drawable.spareribssss)
-        } else if (position == 1) {
-            image.setImageResource(R.drawable.hotdoggg)
-        } else if (position == 2) {
-            image.setImageResource(R.drawable.spaghettiii)
-        } else if (position == 3) {
-            image.setImageResource(R.drawable.aspergesss)
-        } else if (position == 4) {
-            image.setImageResource(R.drawable.chickenn)
-        } else if (position == 5) {
-            image.setImageResource(R.drawable.gehaktt)
+        when (arrayList[position].naam) {
+            "Spareribs" -> image.setImageResource(R.drawable.spareribssss)
+            "Hotdog" -> image.setImageResource(R.drawable.hotdoggg)
+            "Spaghetti" -> image.setImageResource(R.drawable.spaghettiii)
+            "Asparagus" -> image.setImageResource(R.drawable.aspergesss)
+            "Chicken" -> image.setImageResource(R.drawable.chickenn)
+            "Minced Meat" -> image.setImageResource(R.drawable.gehaktt)
         }
-
-            return convertView
-
+        return convertView
         }
     }
 
